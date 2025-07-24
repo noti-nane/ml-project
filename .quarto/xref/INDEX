@@ -1,0 +1,26 @@
+{
+  "about.qmd": {
+    "about.html": "c25e5163"
+  },
+  "index.qmd": {
+    "index.html": "5ca89080"
+  },
+  "project1.ipynb": {
+    "project1.html": "dee6af1b"
+  },
+  "project2.ipynb": {
+    "project2.html": "ced39c2c"
+  },
+  "docs/Project1.ipynb": {
+    "Project1.html": "ce17555d"
+  },
+  "docs/Project2.ipynb": {
+    "Project2.html": "d0c027c9"
+  },
+  "Project1.ipynb": {
+    "Project1.html": "8d5dfea5"
+  },
+  "Project2.ipynb": {
+    "Project2.html": "b3d566d0"
+  }
+}

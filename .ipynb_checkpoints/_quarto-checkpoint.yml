@@ -1,0 +1,24 @@
+project:
+  type: website
+  output-dir: docs
+
+
+website:
+  title: "2025 창의융합과제연구"
+  navbar:
+    left:
+      - href: Project1.ipynb
+        text: Project1
+      - href: Project2.ipynb
+        text: Project2
+      
+format:
+  html:
+    theme:
+      - lux
+      - brand
+    css: styles.css
+    toc: true
+
+
+
