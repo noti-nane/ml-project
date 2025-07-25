@@ -11,6 +11,8 @@ website:
         text: Project1
       - href: Project2.ipynb
         text: Project2
+      - href: 타이타닉 데이터 분석.ipynb
+        text: Titanic 분석
       
 format:
   html:
