@@ -1,5 +1,5 @@
 ---
-title: "ml-project"
+title: "2025 창의융합과제연구 (Titanic)"
 ---
 
 This is a Quarto website.

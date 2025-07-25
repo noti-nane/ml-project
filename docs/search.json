@@ -1,59 +1,59 @@
 [
   {
-    "objectID": "Project2.html",
-    "href": "Project2.html",
-    "title": "Project2 : 붓꽃 분류",
+    "objectID": "타이타닉 데이터 분석.html",
+    "href": "타이타닉 데이터 분석.html",
+    "title": "타이타닉 데이터 분석",
     "section": "",
-    "text": "seaborn에서 붓꽃에 대한 데이터를 제공함\n부꽃의 품종에 영향을 미치는 요인은 무엇인지 파악하고 모델학습을 통해 품종을 예측하고자함"
+    "text": "RMS 타이타닉은 영국의 화이트 스타 라인이 운영한 북대서양 횡단 여객선으로, 1912년 4월 10일 첫 출항하였다. 영국의 사우샘프턴을 떠나 미국의 뉴욕으로 향하던 중에 4월 15일 빙산과 충돌하여 침몰하였으며, 이로 인해 1,514명이 사망한 것으로 알려져 있다.\n타이타닉 데이터를 분석하여 생존에 영향을 준 요인을 파악하고, 이를 바탕으로 생존 여부를 예측하는 모델을 학습해보자."
   },
   {
-    "objectID": "Project2.html#데이터셋",
-    "href": "Project2.html#데이터셋",
-    "title": "Project2 : 붓꽃 분류",
+    "objectID": "타이타닉 데이터 분석.html#데이터셋",
+    "href": "타이타닉 데이터 분석.html#데이터셋",
+    "title": "타이타닉 데이터 분석",
     "section": "",
-    "text": "seaborn에서 붓꽃에 대한 데이터를 제공함\n부꽃의 품종에 영향을 미치는 요인은 무엇인지 파악하고 모델학습을 통해 품종을 예측하고자함"
+    "text": "RMS 타이타닉은 영국의 화이트 스타 라인이 운영한 북대서양 횡단 여객선으로, 1912년 4월 10일 첫 출항하였다. 영국의 사우샘프턴을 떠나 미국의 뉴욕으로 향하던 중에 4월 15일 빙산과 충돌하여 침몰하였으며, 이로 인해 1,514명이 사망한 것으로 알려져 있다.\n타이타닉 데이터를 분석하여 생존에 영향을 준 요인을 파악하고, 이를 바탕으로 생존 여부를 예측하는 모델을 학습해보자."
   },
   {
-    "objectID": "Project2.html#데이터-확인-및-전처리",
-    "href": "Project2.html#데이터-확인-및-전처리",
-    "title": "Project2 : 붓꽃 분류",
+    "objectID": "타이타닉 데이터 분석.html#데이터",
+    "href": "타이타닉 데이터 분석.html#데이터",
+    "title": "타이타닉 데이터 분석",
+    "section": "데이터",
+    "text": "데이터\n\nseaborn 라이브러리에서 제공하는 titanic 데이터 사용\nsurvived: 생존 여부(0, 1)\npclass: 객실 등급(1, 2, 3)\nsex: 성별\nage: 나이\nsibsp: 함께 탑승한 형제자매, 배우자 수\nparch: 함께 탑승한 부모, 자식 수\nfare: 요금\nembarked: 탑승 항구(S, C, Q)\nclass: 객실 등급(First, Second, Third)\nwho: 사람 구분(man, woman, child)\nadult_male: 성인 남자 여부(True, False)\ndeck: 갑판\nembark_town: 탑승 항구(Southhampton, Cherbourg, Queenstown)\nalive: 생존여부(no, yes)\nalone: 1인 탑승 여부(True, False)"
+  },
+  {
+    "objectID": "타이타닉 데이터 분석.html#데이터-확인-및-전처리",
+    "href": "타이타닉 데이터 분석.html#데이터-확인-및-전처리",
+    "title": "타이타닉 데이터 분석",
     "section": "2. 데이터 확인 및 전처리",
-    "text": "2. 데이터 확인 및 전처리\n\n# 라이브러리 불러오기\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n\n# 데이터 불러오기 \ndf = sns.load_dataset('iris')\ndf.head()\n\n\n\n\n\n\n\n\nsepal_length\nsepal_width\npetal_length\npetal_width\nspecies\n\n\n\n\n0\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n1\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n2\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n3\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n4\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n\n\n\n\n\n\n# 데이터 확인\ndf.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 150 entries, 0 to 149\nData columns (total 5 columns):\n #   Column        Non-Null Count  Dtype  \n---  ------        --------------  -----  \n 0   sepal_length  150 non-null    float64\n 1   sepal_width   150 non-null    float64\n 2   petal_length  150 non-null    float64\n 3   petal_width   150 non-null    float64\n 4   species       150 non-null    object \ndtypes: float64(4), object(1)\nmemory usage: 6.0+ KB\n\n\n\n# 데이터 전처리 : 결측값 확인\ndf.isna().sum()\n\nsepal_length    0\nsepal_width     0\npetal_length    0\npetal_width     0\nspecies         0\ndtype: int64"
+    "text": "2. 데이터 확인 및 전처리\n\n# 라이브러리 불러오기\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n\nimport matplotlib.pyplot as plt\nfrom matplotlib import font_manager, rc\n\n# 윈도우 기본 한글 폰트 경로 (확인 후 변경 가능)\nfont_path = \"C:/Windows/Fonts/malgun.ttf\"\nfont_name = font_manager.FontProperties(fname=font_path).get_name()\nrc('font', family=font_name)\n\n\n#!pip install scikit-learn\n\n\n# 데이터 불러오기\nfrom sklearn.model_selection import train_test_split\ndf = sns.load_dataset('titanic')\ndf.head(3)\n\n\n\n\n\n\n\n\nsurvived\npclass\nsex\nage\nsibsp\nparch\nfare\nembarked\nclass\nwho\nadult_male\ndeck\nembark_town\nalive\nalone\n\n\n\n\n0\n0\n3\nmale\n22.0\n1\n0\n7.2500\nS\nThird\nman\nTrue\nNaN\nSouthampton\nno\nFalse\n\n\n1\n1\n1\nfemale\n38.0\n1\n0\n71.2833\nC\nFirst\nwoman\nFalse\nC\nCherbourg\nyes\nFalse\n\n\n2\n1\n3\nfemale\n26.0\n0\n0\n7.9250\nS\nThird\nwoman\nFalse\nNaN\nSouthampton\nyes\nTrue\n\n\n\n\n\n\n\n\n# 데이터 확인\ndf.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 891 entries, 0 to 890\nData columns (total 15 columns):\n #   Column       Non-Null Count  Dtype   \n---  ------       --------------  -----   \n 0   survived     891 non-null    int64   \n 1   pclass       891 non-null    int64   \n 2   sex          891 non-null    object  \n 3   age          714 non-null    float64 \n 4   sibsp        891 non-null    int64   \n 5   parch        891 non-null    int64   \n 6   fare         891 non-null    float64 \n 7   embarked     889 non-null    object  \n 8   class        891 non-null    category\n 9   who          891 non-null    object  \n 10  adult_male   891 non-null    bool    \n 11  deck         203 non-null    category\n 12  embark_town  889 non-null    object  \n 13  alive        891 non-null    object  \n 14  alone        891 non-null    bool    \ndtypes: bool(2), category(2), float64(2), int64(4), object(5)\nmemory usage: 80.7+ KB\n\n\n\ndf.describe()\n\n\n\n\n\n\n\n\nsurvived\npclass\nage\nsibsp\nparch\nfare\n\n\n\n\ncount\n891.000000\n891.000000\n714.000000\n891.000000\n891.000000\n891.000000\n\n\nmean\n0.383838\n2.308642\n29.699118\n0.523008\n0.381594\n32.204208\n\n\nstd\n0.486592\n0.836071\n14.526497\n1.102743\n0.806057\n49.693429\n\n\nmin\n0.000000\n1.000000\n0.420000\n0.000000\n0.000000\n0.000000\n\n\n25%\n0.000000\n2.000000\n20.125000\n0.000000\n0.000000\n7.910400\n\n\n50%\n0.000000\n3.000000\n28.000000\n0.000000\n0.000000\n14.454200\n\n\n75%\n1.000000\n3.000000\n38.000000\n1.000000\n0.000000\n31.000000\n\n\nmax\n1.000000\n3.000000\n80.000000\n8.000000\n6.000000\n512.329200\n\n\n\n\n\n\n\n\n# # 데이터 전처리 : 결측값 확인\nprint(df.isnull().sum())\n\nsurvived         0\npclass           0\nsex              0\nage            177\nsibsp            0\nparch            0\nfare             0\nembarked         2\nclass            0\nwho              0\nadult_male       0\ndeck           688\nembark_town      2\nalive            0\nalone            0\ndtype: int64\n\n\n\n# 결측치 처리\ndf1 = df[['survived', 'pclass', 'sex', 'age', 'sibsp', 'fare', 'embarked']].copy()\n\ndf1.head()\n\n\n\n\n\n\n\n\nsurvived\npclass\nsex\nage\nsibsp\nfare\nembarked\n\n\n\n\n0\n0\n3\nmale\n22.0\n1\n7.2500\nS\n\n\n1\n1\n1\nfemale\n38.0\n1\n71.2833\nC\n\n\n2\n1\n3\nfemale\n26.0\n0\n7.9250\nS\n\n\n3\n1\n1\nfemale\n35.0\n1\n53.1000\nS\n\n\n4\n0\n3\nmale\n35.0\n0\n8.0500\nS\n\n\n\n\n\n\n\n\ndf1.isna().sum()\n\nsurvived      0\npclass        0\nsex           0\nage         177\nsibsp         0\nfare          0\nembarked      2\ndtype: int64\n\n\n\n# age는 평균으로 대체\ndf1['age'] = df1['age'].fillna(df1['age'].mean())\n\n\n# embarked는 최빈값으로 대체\ndf1['embarked'] = df1['embarked'].fillna(df1['embarked'].mode()[0])\n\n\ndf1.head()\n\n\n\n\n\n\n\n\nsurvived\npclass\nsex\nage\nsibsp\nfare\nembarked\n\n\n\n\n0\n0\n3\nmale\n22.0\n1\n7.2500\nS\n\n\n1\n1\n1\nfemale\n38.0\n1\n71.2833\nC\n\n\n2\n1\n3\nfemale\n26.0\n0\n7.9250\nS\n\n\n3\n1\n1\nfemale\n35.0\n1\n53.1000\nS\n\n\n4\n0\n3\nmale\n35.0\n0\n8.0500\nS\n\n\n\n\n\n\n\n\n# 확인\nprint(df1.isnull().sum())\n\nsurvived    0\npclass      0\nsex         0\nage         0\nsibsp       0\nfare        0\nembarked    0\ndtype: int64"
   },
   {
-    "objectID": "Project2.html#학습평가-데이터-분할",
-    "href": "Project2.html#학습평가-데이터-분할",
-    "title": "Project2 : 붓꽃 분류",
+    "objectID": "타이타닉 데이터 분석.html#학습평가-데이터-분할",
+    "href": "타이타닉 데이터 분석.html#학습평가-데이터-분할",
+    "title": "타이타닉 데이터 분석",
     "section": "3. 학습/평가 데이터 분할",
-    "text": "3. 학습/평가 데이터 분할\n\n학습 데이터와 평가 데이터를 8:2 비율로 분할함\n\n\n# 학습/평가 데이터 분할 (8:2 비율)\nX = df.drop(columns='species')\ny = df['species']\n\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)"
+    "text": "3. 학습/평가 데이터 분할\n\n학습 데이터와 평가 데이터를 7:3 비율로 분할함\n\n\n# 5. 데이터 분할\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import classification_report, confusion_matrix, accuracy_score\n\n\n# 학습/평가 데이터 분할 (7:3 비율)\nX = df1.drop('survived', axis=1)                # feature \ny = df1['survived']                             # target\n\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)\n\n\nX_train\n\n\n\n\n\n\n\n\npclass\nsex\nage\nsibsp\nfare\nembarked\n\n\n\n\n445\n1\nmale\n4.000000\n0\n81.8583\nS\n\n\n650\n3\nmale\n29.699118\n0\n7.8958\nS\n\n\n172\n3\nfemale\n1.000000\n1\n11.1333\nS\n\n\n450\n2\nmale\n36.000000\n1\n27.7500\nS\n\n\n314\n2\nmale\n43.000000\n1\n26.2500\nS\n\n\n...\n...\n...\n...\n...\n...\n...\n\n\n106\n3\nfemale\n21.000000\n0\n7.6500\nS\n\n\n270\n1\nmale\n29.699118\n0\n31.0000\nS\n\n\n860\n3\nmale\n41.000000\n2\n14.1083\nS\n\n\n435\n1\nfemale\n14.000000\n1\n120.0000\nS\n\n\n102\n1\nmale\n21.000000\n0\n77.2875\nS\n\n\n\n\n623 rows × 6 columns"
   },
   {
-    "objectID": "Project2.html#데이터-탐색",
-    "href": "Project2.html#데이터-탐색",
-    "title": "Project2 : 붓꽃 분류",
+    "objectID": "타이타닉 데이터 분석.html#데이터-탐색",
+    "href": "타이타닉 데이터 분석.html#데이터-탐색",
+    "title": "타이타닉 데이터 분석",
     "section": "4. 데이터 탐색",
-    "text": "4. 데이터 탐색\n\n# 요약 통계량\nX_train.describe()\n\n\n\n\n\n\n\n\nsepal_length\nsepal_width\npetal_length\npetal_width\n\n\n\n\ncount\n105.000000\n105.000000\n105.000000\n105.000000\n\n\nmean\n5.842857\n3.009524\n3.870476\n1.239048\n\n\nstd\n0.833304\n0.418910\n1.721355\n0.742720\n\n\nmin\n4.300000\n2.000000\n1.100000\n0.100000\n\n\n25%\n5.100000\n2.800000\n1.700000\n0.400000\n\n\n50%\n5.800000\n3.000000\n4.300000\n1.300000\n\n\n75%\n6.400000\n3.300000\n5.100000\n1.800000\n\n\nmax\n7.700000\n4.200000\n6.700000\n2.500000\n\n\n\n\n\n\n\n\n# 상자수염 그래프\ndf_train = pd.concat([X_train, y_train], axis=1)\n\nplt.figure(figsize=(5,3))\nfor i, feature in enumerate(X_train.columns):\n    plt.subplot(2, 2, i+1)\n    sns.boxplot(x=feature, y='species', hue='species', data= df_train)\n    plt.ylabel('')\nplt.show()\n\n\n\n\n\n\n\n\n\n# 산점도\nsns.pairplot(df_train, hue='species', height=2, )\nplt.show()"
+    "text": "4. 데이터 탐색\n\n# 요약 통계량 확인\ndf1_train = pd.concat([X_train, y_train], axis=1)\ndf1_train.describe()\n\n\n\n\n\n\n\n\npclass\nage\nsibsp\nfare\nsurvived\n\n\n\n\ncount\n623.000000\n623.000000\n623.000000\n623.000000\n623.000000\n\n\nmean\n2.341894\n29.344479\n0.576244\n31.840730\n0.370787\n\n\nstd\n0.819945\n13.028013\n1.216267\n51.027372\n0.483404\n\n\nmin\n1.000000\n0.420000\n0.000000\n0.000000\n0.000000\n\n\n25%\n2.000000\n22.000000\n0.000000\n7.925000\n0.000000\n\n\n50%\n3.000000\n29.699118\n0.000000\n14.454200\n0.000000\n\n\n75%\n3.000000\n35.000000\n1.000000\n30.750000\n1.000000\n\n\nmax\n3.000000\n80.000000\n8.000000\n512.329200\n1.000000\n\n\n\n\n\n\n\n\n# survived와 변수 비교하여 분석\nplt.figure(figsize=(4,2))\nsns.countplot(data=df, x='sex', hue='survived', palette='Set2')\nplt.title('Survival Count by Sex')\nplt.xlabel('sex')\nplt.ylabel('Count')\nplt.legend(title='Survived', labels=['No', 'Yes'])\n\nplt.figure(figsize=(4,2))\nsns.countplot(data=df, x='pclass', hue='survived', palette='Set2')\nplt.title('Survival Count by Sex')\nplt.xlabel('pclass')\nplt.ylabel('Count')\nplt.legend(title='Survived', labels=['No', 'Yes'])\n\nbins = [0, 19, 29, 39, 49, 120]\nlabels = ['10대', '20대', '30대', '40대', '50대 이상']\ndf['age_group'] = pd.cut(df['age'], bins=bins, labels=labels, right=True, include_lowest=True)\n\nplt.figure(figsize=(8, 2))\nsns.countplot(data=df, x='age_group', hue='survived', palette='Set2')\nplt.title('Survival Count by Age Group')\nplt.xlabel('Age Group')\nplt.ylabel('Count')\nplt.legend(title='Survived', labels=['No', 'Yes'])\nplt.show()\n\nplt.figure(figsize=(4,2))\nsns.countplot(data=df, x='embarked', hue='survived', palette='Set2')\nplt.title('Survival Count by Sex')\nplt.xlabel('embarked')\nplt.ylabel('Count')\nplt.legend(title='Survived', labels=['No', 'Yes'])\n\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplt.figure(figsize=(10, 4))\n\n# 나이 vs 생존\nplt.subplot(1, 2, 1)\nsns.boxplot(x='survived', y='age', data=df1_train, palette='Set2')\nplt.title('Age vs Survived')\n\n# 요금 vs 생존\nplt.subplot(1, 2, 2)\nsns.boxplot(x='survived', y='fare', data=df1_train, palette='Set2')\nplt.title('Fare vs Survived')\n\nplt.tight_layout()\nplt.show()\n\nC:\\Users\\Public\\Documents\\ESTsoft\\CreatorTemp\\ipykernel_10616\\1835366976.py:5: FutureWarning: \n\nPassing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.\n\n  sns.boxplot(x='survived', y='age', data=df1_train, palette='Set2')\nC:\\Users\\Public\\Documents\\ESTsoft\\CreatorTemp\\ipykernel_10616\\1835366976.py:10: FutureWarning: \n\nPassing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.\n\n  sns.boxplot(x='survived', y='fare', data=df1_train, palette='Set2')\n\n\n\n\n\n\n\n\n\n\n# 상관계수\ncorr_matrix = df[['pclass', 'age', 'sibsp', 'fare', 'survived']].corr()\nupp_mat = np.triu(corr_matrix)\n# 상관계수 출력\nprint(corr_matrix)\n\n            pclass       age     sibsp      fare  survived\npclass    1.000000 -0.369226  0.083081 -0.549500 -0.338481\nage      -0.369226  1.000000 -0.308247  0.096067 -0.077221\nsibsp     0.083081 -0.308247  1.000000  0.159651 -0.035322\nfare     -0.549500  0.096067  0.159651  1.000000  0.257307\nsurvived -0.338481 -0.077221 -0.035322  0.257307  1.000000\n\n\n\n# 표현\nplt.figure(figsize=(8, 6))\nsns.heatmap(corr_matrix, annot=True, mask=upp_mat, cmap='coolwarm', fmt=\".2f\")\nplt.title('Correlation Matrix')\nplt.show()\n\nC:\\Users\\default.DESKTOP-VHFHFGU\\anaconda3\\envs\\myenv\\Lib\\site-packages\\seaborn\\utils.py:61: UserWarning: Glyph 8722 (\\N{MINUS SIGN}) missing from font(s) Malgun Gothic.\n  fig.canvas.draw()\nC:\\Users\\default.DESKTOP-VHFHFGU\\anaconda3\\envs\\myenv\\Lib\\site-packages\\IPython\\core\\pylabtools.py:170: UserWarning: Glyph 8722 (\\N{MINUS SIGN}) missing from font(s) Malgun Gothic.\n  fig.canvas.print_figure(bytes_io, **kw)"
   },
   {
-    "objectID": "Project2.html#분류모델-학습-및-평가",
-    "href": "Project2.html#분류모델-학습-및-평가",
-    "title": "Project2 : 붓꽃 분류",
-    "section": "5. 분류모델 학습 및 평가",
-    "text": "5. 분류모델 학습 및 평가\n\n# 최적의 k 값 선택\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.model_selection import cross_val_score\n\nk_range = range(1, 20, 2)\nk_scores = []\n\nfor k in k_range:\n    knn = KNeighborsClassifier(n_neighbors=k)\n    scores = cross_val_score(knn, X_train, y_train, cv=5, scoring='accuracy')\n    k_scores.append(scores.mean())\n    print(f'k={k}일 때 정확도 : {scores.mean():.3f}')\n    \n    \n\nk=1일 때 정확도 : 0.952\nk=3일 때 정확도 : 0.933\nk=5일 때 정확도 : 0.943\nk=7일 때 정확도 : 0.952\nk=9일 때 정확도 : 0.943\nk=11일 때 정확도 : 0.933\nk=13일 때 정확도 : 0.943\nk=15일 때 정확도 : 0.933\nk=17일 때 정확도 : 0.933\nk=19일 때 정확도 : 0.943\n\n\n\n# 모델 성능이 가장 좋은 k 값 선택\nbest_k = k_range[k_scores.index(max(k_scores))]\nprint(f\"최적의 k 값은 {best_k}이며, 평균 정확도는 {max(k_scores):.3f}\")\n\n최적의 k 값은 1이며, 평균 정확도는 0.952\n\n\n\n# K-NN 분류모델 생성 및 학습\nknn = KNeighborsClassifier(n_neighbors=best_k)\nknn.fit(X_train, y_train)\n\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score\n\n#학습데이터로 학습한 분류모델에 평가데이터를 입력하여 클래스 분류\ny_pred = knn.predict(X_test)\n\n# 분류모델 평가 : 정확도, 정밀도, 재현도\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score\naccuracy =accuracy_score(y_test, y_pred)\nprecision = precision_score(y_test, y_pred, average='micro')\nrecall = recall_score(y_test, y_pred, average='micro')\n\nprint(f\"정확도 : {accuracy:.3f}\")\nprint(f\"정밀도 : {precision:.3f}\")\nprint(f\"재현율 : {recall:.3f}\")\n\n정확도 : 1.000\n정밀도 : 1.000\n재현율 : 1.000"
+    "objectID": "타이타닉 데이터 분석.html#분류모델-학습",
+    "href": "타이타닉 데이터 분석.html#분류모델-학습",
+    "title": "타이타닉 데이터 분석",
+    "section": "5. 분류모델 학습",
+    "text": "5. 분류모델 학습\n\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.model_selection import cross_val_score, train_test_split\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score\n\n\n# 0. 범주형 변수 숫자로 변환\ndf1['sex'] = df1['sex'].map({'female': 0, 'male': 1})\ndf1['embarked'] = df1['embarked'].map({'S': 0, 'C': 1, 'Q': 2})\n\n\n# 상관관계가 존재하는 특성(feature) 선택\nfeatures = ['pclass', 'age', 'sibsp', 'fare']\nX_train = df1_train[features] \n\n\n# 1. Feature/Target 분리\nX = df1.drop(['survived'], axis=1)  # survived 제외\ny = df1['survived']  # target은 0/1\n\n\n# 2. 학습/평가 데이터 분할 (7:3)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)\n\n\n# 3. 최적의 k 찾기\nk_range = range(1, 20, 2)  # 1, 3, 5, ..., 19\nk_scores = []\n\nfor k in k_range:\n    knn = KNeighborsClassifier(n_neighbors=k)\n    scores = cross_val_score(knn, X_train, y_train, cv=5, scoring='accuracy')\n    k_scores.append(scores.mean())\n    print(f\"k = {k}일 때 평균 정확도: {scores.mean():.3f}\")\n\nk = 1일 때 평균 정확도: 0.650\nk = 3일 때 평균 정확도: 0.682\nk = 5일 때 평균 정확도: 0.679\nk = 7일 때 평균 정확도: 0.705\nk = 9일 때 평균 정확도: 0.695\nk = 11일 때 평균 정확도: 0.701\nk = 13일 때 평균 정확도: 0.706\nk = 15일 때 평균 정확도: 0.698\nk = 17일 때 평균 정확도: 0.697\nk = 19일 때 평균 정확도: 0.695\n\n\n\n# 모델 성능이 가장 좋은 k 값 선택\nbest_k = k_range[k_scores.index(max(k_scores))]\nprint(f\"최적의 k 값은 {best_k}이며, 평균 정확도는 {max(k_scores):.3f}\")\n\n최적의 k 값은 13이며, 평균 정확도는 0.706\n\n\n\n# K-NN 분류모델 생성 및 학습\nknn = KNeighborsClassifier(n_neighbors=best_k)\nknn.fit(X_train, y_train)\n\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score\n\n#학습데이터로 학습한 분류모델에 평가데이터를 입력하여 클래스 분류\ny_pred = knn.predict(X_test)\n\n# 분류모델 평가 : 정확도, 정밀도, 재현도\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score\naccuracy =accuracy_score(y_test, y_pred)\nprecision = precision_score(y_test, y_pred, average='micro')\nrecall = recall_score(y_test, y_pred, average='micro')\n\nprint(f\"정확도 : {accuracy:.3f}\")\nprint(f\"정밀도 : {precision:.3f}\")\nprint(f\"재현율 : {recall:.3f}\")\n\n정확도 : 0.694\n정밀도 : 0.694\n재현율 : 0.694"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "ml-project",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
+    "objectID": "타이타닉 데이터 분석.html#회귀모델-평가",
+    "href": "타이타닉 데이터 분석.html#회귀모델-평가",
+    "title": "타이타닉 데이터 분석",
+    "section": "6. 회귀모델 평가",
+    "text": "6. 회귀모델 평가\n\nCNN 분류 모델의 성능 평가 결과, 정확도는 0.694로, 전체 데이터 중 약 69.4%를 올바르게 예측했다는 의미를 가진다.\n정밀도 역시 0.694로, 모델이 양성이라고 판단한 예측 중 실제로 맞춘 비율이 69.4%임을 나타낸다.\n재현율도 0.694로, 실제 양성 데이터 중에서 모델이 제대로 찾아낸 비율이 동일하게 69.4%였다.\n세 지표가 모두 동일하다는 점은 예측이 특정 클래스에 치우치지 않고 균형 있게 작동했음을 시사한다. 하지만 이 수치는 뛰어난 성능이라고 보긴 어려우며, 개선 여지가 충분히 있다. 예를 들어, 데이터 전처리나 하이퍼파라미터 조정, 모델 구조 변경 등을 통해 성능을 높일 수 있다.\n종합적으로 봤을 때, 모델은 기본적인 분류 능력을 갖추었지만 실전 적용을 위해선 추가 개선이 필요하다."
   },
   {
     "objectID": "Project1.html",
@@ -138,5 +138,61 @@
     "title": "선형회귀",
     "section": "설명",
     "text": "설명\n\nRMSE는 0.794으로, 주택 중위 가격의 실제값과 예측값이 평균적으로 약 8만 달러 차이가 있다는 것을 의미함\n학습 데이터에서 주택 중위 가격의 평균은 약 20만 달러인 점을 고려하면, 모델의 평균 오차는 약 25% 수준임을 알 수 있음\n따라서 평균 오차가 비교적 큰 편이므로, 모델 성능 개선이 필요한 것으로 판단됨\n결정계수는 52.0%로 나타남\n\n\n# 데이터 확인\ndf.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 20640 entries, 0 to 20639\nData columns (total 9 columns):\n #   Column       Non-Null Count  Dtype  \n---  ------       --------------  -----  \n 0   MedInc       20640 non-null  float64\n 1   HouseAge     20640 non-null  float64\n 2   AveRooms     20640 non-null  float64\n 3   AveBedrms    20640 non-null  float64\n 4   Population   20640 non-null  float64\n 5   AveOccup     20640 non-null  float64\n 6   Latitude     20640 non-null  float64\n 7   Longitude    20640 non-null  float64\n 8   MedHouseVal  20640 non-null  float64\ndtypes: float64(9)\nmemory usage: 1.4 MB"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "2025 창의융합과제연구 (Titanic)",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "Project2.html",
+    "href": "Project2.html",
+    "title": "Project2 : 붓꽃 분류",
+    "section": "",
+    "text": "seaborn에서 붓꽃에 대한 데이터를 제공함\n부꽃의 품종에 영향을 미치는 요인은 무엇인지 파악하고 모델학습을 통해 품종을 예측하고자함"
+  },
+  {
+    "objectID": "Project2.html#데이터셋",
+    "href": "Project2.html#데이터셋",
+    "title": "Project2 : 붓꽃 분류",
+    "section": "",
+    "text": "seaborn에서 붓꽃에 대한 데이터를 제공함\n부꽃의 품종에 영향을 미치는 요인은 무엇인지 파악하고 모델학습을 통해 품종을 예측하고자함"
+  },
+  {
+    "objectID": "Project2.html#데이터-확인-및-전처리",
+    "href": "Project2.html#데이터-확인-및-전처리",
+    "title": "Project2 : 붓꽃 분류",
+    "section": "2. 데이터 확인 및 전처리",
+    "text": "2. 데이터 확인 및 전처리\n\n# 라이브러리 불러오기\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n\n# 데이터 불러오기 \ndf = sns.load_dataset('iris')\ndf.head()\n\n\n\n\n\n\n\n\nsepal_length\nsepal_width\npetal_length\npetal_width\nspecies\n\n\n\n\n0\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n1\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n2\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n3\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n4\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n\n\n\n\n\n\n# 데이터 확인\ndf.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 150 entries, 0 to 149\nData columns (total 5 columns):\n #   Column        Non-Null Count  Dtype  \n---  ------        --------------  -----  \n 0   sepal_length  150 non-null    float64\n 1   sepal_width   150 non-null    float64\n 2   petal_length  150 non-null    float64\n 3   petal_width   150 non-null    float64\n 4   species       150 non-null    object \ndtypes: float64(4), object(1)\nmemory usage: 6.0+ KB\n\n\n\n# 데이터 전처리 : 결측값 확인\ndf.isna().sum()\n\nsepal_length    0\nsepal_width     0\npetal_length    0\npetal_width     0\nspecies         0\ndtype: int64"
+  },
+  {
+    "objectID": "Project2.html#학습평가-데이터-분할",
+    "href": "Project2.html#학습평가-데이터-분할",
+    "title": "Project2 : 붓꽃 분류",
+    "section": "3. 학습/평가 데이터 분할",
+    "text": "3. 학습/평가 데이터 분할\n\n학습 데이터와 평가 데이터를 8:2 비율로 분할함\n\n\n# 학습/평가 데이터 분할 (8:2 비율)\nX = df.drop(columns='species')\ny = df['species']\n\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)"
+  },
+  {
+    "objectID": "Project2.html#데이터-탐색",
+    "href": "Project2.html#데이터-탐색",
+    "title": "Project2 : 붓꽃 분류",
+    "section": "4. 데이터 탐색",
+    "text": "4. 데이터 탐색\n\n# 요약 통계량\nX_train.describe()\n\n\n\n\n\n\n\n\nsepal_length\nsepal_width\npetal_length\npetal_width\n\n\n\n\ncount\n105.000000\n105.000000\n105.000000\n105.000000\n\n\nmean\n5.842857\n3.009524\n3.870476\n1.239048\n\n\nstd\n0.833304\n0.418910\n1.721355\n0.742720\n\n\nmin\n4.300000\n2.000000\n1.100000\n0.100000\n\n\n25%\n5.100000\n2.800000\n1.700000\n0.400000\n\n\n50%\n5.800000\n3.000000\n4.300000\n1.300000\n\n\n75%\n6.400000\n3.300000\n5.100000\n1.800000\n\n\nmax\n7.700000\n4.200000\n6.700000\n2.500000\n\n\n\n\n\n\n\n\n# 상자수염 그래프\ndf_train = pd.concat([X_train, y_train], axis=1)\n\nplt.figure(figsize=(5,3))\nfor i, feature in enumerate(X_train.columns):\n    plt.subplot(2, 2, i+1)\n    sns.boxplot(x=feature, y='species', hue='species', data= df_train)\n    plt.ylabel('')\nplt.show()\n\n\n\n\n\n\n\n\n\n# 산점도\nsns.pairplot(df_train, hue='species', height=2, )\nplt.show()"
+  },
+  {
+    "objectID": "Project2.html#분류모델-학습-및-평가",
+    "href": "Project2.html#분류모델-학습-및-평가",
+    "title": "Project2 : 붓꽃 분류",
+    "section": "5. 분류모델 학습 및 평가",
+    "text": "5. 분류모델 학습 및 평가\n\n# 최적의 k 값 선택\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.model_selection import cross_val_score\n\nk_range = range(1, 20, 2)\nk_scores = []\n\nfor k in k_range:\n    knn = KNeighborsClassifier(n_neighbors=k)\n    scores = cross_val_score(knn, X_train, y_train, cv=5, scoring='accuracy')\n    k_scores.append(scores.mean())\n    print(f'k={k}일 때 정확도 : {scores.mean():.3f}')\n    \n    \n\nk=1일 때 정확도 : 0.952\nk=3일 때 정확도 : 0.933\nk=5일 때 정확도 : 0.943\nk=7일 때 정확도 : 0.952\nk=9일 때 정확도 : 0.943\nk=11일 때 정확도 : 0.933\nk=13일 때 정확도 : 0.943\nk=15일 때 정확도 : 0.933\nk=17일 때 정확도 : 0.933\nk=19일 때 정확도 : 0.943\n\n\n\n# 모델 성능이 가장 좋은 k 값 선택\nbest_k = k_range[k_scores.index(max(k_scores))]\nprint(f\"최적의 k 값은 {best_k}이며, 평균 정확도는 {max(k_scores):.3f}\")\n\n최적의 k 값은 1이며, 평균 정확도는 0.952\n\n\n\n# K-NN 분류모델 생성 및 학습\nknn = KNeighborsClassifier(n_neighbors=best_k)\nknn.fit(X_train, y_train)\n\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score\n\n#학습데이터로 학습한 분류모델에 평가데이터를 입력하여 클래스 분류\ny_pred = knn.predict(X_test)\n\n# 분류모델 평가 : 정확도, 정밀도, 재현도\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score\naccuracy =accuracy_score(y_test, y_pred)\nprecision = precision_score(y_test, y_pred, average='micro')\nrecall = recall_score(y_test, y_pred, average='micro')\n\nprint(f\"정확도 : {accuracy:.3f}\")\nprint(f\"정밀도 : {precision:.3f}\")\nprint(f\"재현율 : {recall:.3f}\")\n\n정확도 : 1.000\n정밀도 : 1.000\n재현율 : 1.000"
   }
 ]
